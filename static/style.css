@@ -1,0 +1,11 @@
+.background{
+    color: blue;
+}
+.title{
+    font-size: 12rem;
+    font-family: 'Gochi Hand', cursive;
+}
+#no_done{
+    text-decoration: underline;
+}
+

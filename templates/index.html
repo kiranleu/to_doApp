@@ -1,28 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    {% block content %}
-    <h2>Tasks:</h2>
+{% extends "base.html" %} {% block content %}
+
+<div class="container" "align-center">
+    <h2 class="title">Tasks To Do</h2>
+    <div class="row">
+        <div class="col-sm-9">
+            {% for item in todo_items %}
+            <p class="paragraph"><b>
+                {% if item.done %}
+                 <s>{{ item.name }}</s>
+               {% else %}
+                   {{ item.name }} 
+                   {% endif %}
+               </b></p>
+
+            <p> <i>{{ item.description }}</i>
+
+                   
+            </p>
+                    <div class="row">
+                        <div class="col-sm-3" "align-right">
+                            <button class="btn btn-success"><a href="/done/{{ item.id }}">Done</button></a>
+                       
+                            <button class="btn btn-warning"><a href="/edit/{{ item.id }}">Edit</button></a>
+                       
+                            
+                        </div>
+                    </div>
+            
+                           
+                       
     
-      
-    {% for item in todo_items %}
-    <p>{{ item.name }}
-    <button><a href="#">Edit</button></a></p>
-    <p>{{ item.description }}</p>
-    {% endfor %}
-    
-   
-    
-        
-    <a href="/add">Add Item</a>
+
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="/add">Add New Task</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
+
+
+
 
 {% endblock content %}
-    
-</body>
-</html>
